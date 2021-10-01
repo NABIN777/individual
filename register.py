@@ -19,17 +19,15 @@ conn=sqlite3.connect('register.db')
 
 c=conn.cursor()
 
-######table
-
-# c.execute(""" CREATE TABLE login (
+##################################################table#####################################
+c.execute(""" CREATE TABLE IF NOT EXISTS login(
         
-#         name String NOT NULL,
-#         username String PRIMARY KEY,
-#         address String NOT NULL,
-#         password String NOT NULL,
+         name String NOT NULL,
+         username Text PRIMARY KEY,
+         address String NOT NULL,
+         password String NOT NULL
 
-
-#         )""")
+    )""")
 def run_register():
    root.destroy()
    subprocess.call(["python","register.py"])
@@ -47,7 +45,7 @@ def register():
 
     c=conn.cursor()
 
-    c.execute('SELECT 1 FROM login WHERE username = ?',(usernamer_entry.get(),))
+    c.execute('SELECT * FROM login WHERE username = ?',(usernameR_entry.get(),))
 
     while len(c.fetchall()) > 0:
 
@@ -55,17 +53,18 @@ def register():
         
         run_register()
 
-        c.execute('SELECT 1 FROM login WHERE username = ?',(usernamer_entry.get(),))
+        c.execute('SELECT * FROM login WHERE username = ?',(usernameR_entry.get(),))
 
 
-    c.execute("INSERT INTO login VALUES(:name, :username, :address, :password)",
+    c.execute("INSERT INTO login VALUES(:name, :username, :address,:password)",
         
                 {
                     "name": name_entry.get(),
-                    "usernamer": usernamer_entry.get(),
+                    "username": usernameR_entry.get(),
+
                     "address": address_entry.get(),
-                    "password": password_entry.get(),
-                    
+                 
+                    "password": password_entry.get()
                 }
         
         )
@@ -73,15 +72,19 @@ def register():
     messagebox.showinfo("register","register sucessfully")
     
     name_entry.delete(0,END)
-    usernamer_entry.delete(0,END)
+    usernameR_entry.delete(0,END)
     address_entry.delete(0,END)
-
+    
     password_entry.delete(0,END)
 
     conn.commit()
     conn.close()
     
     run_login()
+
+
+# gui-------------------------
+
 
 register_text_label=Label(root,text="CREATE ACCOUNT",font=(Canvas,25),bg="#111d5e",fg="dark red",relief=GROOVE,borderwidth=4)
 register_text_label.place(x=55,y=15)
@@ -92,10 +95,10 @@ name_label.place(x=4,y=250)
 name_entry=Entry(root,font=Canvas,width=35,bg="white")
 name_entry.place(x=4,y=275)
 
-usernamer_label=Label(root,bg="#111d5e",text="Username:",font=(Canvas,12),fg="red")
-usernamer_label.place(x=4,y=305)
-usernamer_entry=Entry(root,font=Canvas,width=35,bg="white")
-usernamer_entry.place(x=4,y=330)
+usernameR_label=Label(root,bg="#111d5e",text="Username:",font=(Canvas,12),fg="red")
+usernameR_label.place(x=4,y=305)
+usernameR_entry=Entry(root,font=Canvas,width=35,bg="white")
+usernameR_entry.place(x=4,y=330)
 
 address_label=Label(root,bg="#111d5e",text="Address:",font=(Canvas,12),fg="red")
 address_label.place(x=4,y=360)

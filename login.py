@@ -14,18 +14,22 @@ root.geometry('400x580')
 root.resizable(FALSE, FALSE)
 root.config(bg="#111d5e")
 
+
+# -------------------Database-------------------
+
+
 conn=sqlite3.connect('register.db')
 
 c=conn.cursor()
 
 #######table
 
-# c.execute(""" CREATE TABLE login (
+# c.execute(""" CREATE TABLE login(
         
 #         name String NOT NULL,
 #         username String PRIMARY KEY,
-#         address String NOT NULL,
-#         DOB Integer NOT NULL,
+#         adress String NOT NULL,
+#         phoneno Integer NOT NULL,
 #         password String NOT NULL,
 
 
@@ -76,6 +80,22 @@ def login():
    else:
       
       open(user)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 login_text_label=Label(root,text="LOGIN",font=(Canvas,30),bg="#111d5e",relief=GROOVE,fg="maroon",borderwidth=6)

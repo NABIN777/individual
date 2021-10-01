@@ -5,11 +5,13 @@ import json
 import pyperclip
 from password import password_generator
 from PIL import Image,ImageTk
+import tkhtmlview 
+from tkhtmlview import HTMLLabel
 
 window = Tk()
 window.title("Password Manager")
-window.config(bg="#26afd1")
-# window.resizable(FALSE, FALSE)
+window.config(bg="#111d5e")
+window.resizable(FALSE, FALSE)
 window.geometry('850x500')
 
 def get_password():
@@ -129,15 +131,15 @@ image_3=ImageTk.PhotoImage(image_3)
 
 # Label
 # Label for Website
-website_label = Label(text="Website:", bg="#26afd1", padx=20, font=("Times", 14), fg="RED")
+website_label = Label(text="Website:", bg="#111d5e", padx=20, font=("Times", 14), fg="RED")
 website_label.place(x=80,y=200)
 
 # Label for Email/Username
-email_label = Label(text="Email/Username:", bg="#26afd1", padx=20, font=("Times", 14), fg="RED")
+email_label = Label(text="Email/Username:", bg="#111d5e", padx=20, font=("Times", 14), fg="RED")
 email_label.place(x=80,y=225)
 
 # Label for Password
-password_label = Label(text="Password:", bg="#26afd1", padx=20, font=("Times", 14), fg="RED")
+password_label = Label(text="Password:", bg="#111d5e", padx=20, font=("Times", 14), fg="RED")
 password_label.place(x=80,y=250)
 
 # Entry widgets
@@ -167,5 +169,48 @@ add_button.place(x=290,y=300)
 
 
 
+
+# canvas 
+
+main_frame = Frame(window,bg="black")
+main_frame.place(x=0, y=278)
+
+my_canvas = Canvas(main_frame, width=846, height=250,bg="#111d5e")
+my_canvas.pack(side=LEFT, fill=BOTH)
+
+# my_label=HTMLLabel(my_canvas,html='<a href ="facebook.com">facebook</a>')
+# my_label.place(x=10,y=25)
+
+# html_label = HTMLLabel(my_canvas,bg="#111d5e", html='<a href="youtube.com">youtube</a>')
+# html_label.pack(padx=200,pady=200)
+
+text_label=Label(my_canvas,text="© Nirajan coporate Limited",fg="silver",bg="#111d5e")
+text_label.place(x=330,y=180)
+
+text_label1=Label(my_canvas,text="Kirtipur,Kathmandu",fg="silver",bg="#111d5e")
+text_label1.place(x=350,y=200)
+
+
+text_label1=Label(my_canvas,text="LINKS",fg="silver",bg="#111d5e",relief=GROOVE,borderwidth=6,width=25)
+text_label1.place(x=315,y=5,height=40)
+
+
+
+# html_label = HTMLLabel(my_canvas, html='<h1 style="color: red; text-align: center"> Hello World </H1>')
+# html_label.pack(fill="both", expand=True)
+# html_label.fit_height()
+
+
+
+# my_label = HTMLLabel(window, html="""
+#     <ul>
+#         <li><a href='https://www.geeksforgeeks.org/python-programming-language/'>Python</a></li>
+#         <li><a href='https://www.geeksforgeeks.org/c-plus-plus/'>C++</a></li>
+#         <li><a href='https://www.geeksforgeeks.org/java/'>Java</a></li>
+#     </ul>
+#     """)
+ 
+# Adjust label
+# my_label.pack(pady=20, padx=20)
 
 window.mainloop()
