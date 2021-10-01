@@ -8,9 +8,9 @@ from PIL import Image,ImageTk
 
 window = Tk()
 window.title("Password Manager")
-window.config(padx=20, pady=20, bg="#26afd1")
-window.resizable(FALSE, FALSE)
-window.geometry('900x400')
+window.config(bg="#26afd1")
+# window.resizable(FALSE, FALSE)
+window.geometry('850x500')
 
 def get_password():
     password = password_generator()
@@ -106,14 +106,13 @@ def search_password():
                                                                                          f"has not been saved")
 
 # adding images and canvas
-l_1=Image.open("logo.jpg")
+l_1=Image.open("logo.png")
 l_1=l_1.resize((300,255),Image.ANTIALIAS)
 l_1=ImageTk.PhotoImage(l_1)
 canvas = Canvas(width=200, height=200, bg="ORANGE", highlightthickness=0)
 canvas.config()
 canvas.create_image(100, 100, image=l_1)
-canvas.grid(column=1, row=0)
-
+canvas.place(x=325,y=10)
 
 image_1=Image.open("search.png")
 image_1=image_1.resize((190,22),Image.ANTIALIAS)
@@ -125,50 +124,48 @@ image_2=image_2.resize((190,22),Image.ANTIALIAS)
 image_2=ImageTk.PhotoImage(image_2)
 
 image_3=Image.open("add.png")
-image_3=image_3.resize((200,30),Image.ANTIALIAS)
+image_3=image_3.resize((200,20),Image.ANTIALIAS)
 image_3=ImageTk.PhotoImage(image_3)
 
 # Label
 # Label for Website
-website_label = Label(text="Website", bg="#26afd1", padx=20, font=("Times", 14), fg="RED")
-website_label.grid(column=0, row=1, sticky=W)
+website_label = Label(text="Website:", bg="#26afd1", padx=20, font=("Times", 14), fg="RED")
+website_label.place(x=80,y=200)
 
 # Label for Email/Username
-email_label = Label(text="Email/Username", bg="#26afd1", padx=20, font=("Times", 14), fg="RED")
-email_label.grid(column=0, row=2, sticky=W)
+email_label = Label(text="Email/Username:", bg="#26afd1", padx=20, font=("Times", 14), fg="RED")
+email_label.place(x=80,y=225)
 
 # Label for Password
-password_label = Label(text="Password", bg="#26afd1", padx=20, font=("Times", 14), fg="RED")
-password_label.grid(column=0, row=3,sticky=W)
-window.grid_columnconfigure(1, weight=1)
+password_label = Label(text="Password:", bg="#26afd1", padx=20, font=("Times", 14), fg="RED")
+password_label.place(x=80,y=250)
+
 # Entry widgets
-website_entry = Entry(width=30, bg="GREY", fg="RED", font=("Times", 14))
+website_entry = Entry(width=30, bg="silver", fg="RED", font=("Times", 14))
 website_entry.insert(END, string="")
-website_entry.grid(column=1, row=1)
+website_entry.place(x=250,y=200)
 # starting cursor focus
 website_entry.focus()
-email_entry = Entry(width=30, bg="GREY", fg="RED", font=("Times", 14))
+email_entry = Entry(width=30, bg="silver", fg="RED", font=("Times", 14))
 email_entry.insert(END, string="")
-email_entry.grid(column=1, row=2)
+email_entry.place(x=250,y=225)
 # set default email
 email_entry.insert(0, "nabin.kh@example.com")
 
-password_entry = Entry(width=30, bg="GREY", fg="RED", font=("Times", 14))
+password_entry = Entry(width=30, bg="silver", fg="RED", font=("Times", 14))
 password_entry.insert(END, string="")
-password_entry.grid(column=1, row=3)
+password_entry.place(x=250,y=250)
 
 # buttons
 search_button = Button(window,command=search_password,image=image_1)
-search_button.place(x=660,y=200)
+search_button.place(x=550,y=200)
 
 generate_button = Button(window,command=get_password,image=image_2)
-generate_button.place(x=660,y=255)
+generate_button.place(x=550,y=245)
 add_button = Button(window,command=save_password,image=image_3)
-add_button.grid(column=1, row=5)
+add_button.place(x=290,y=300)
 
-# Dummy widget for to get an empty rows
-dummy_label = Label(bg="#26afd1")
-dummy_label.grid(column=0, row=4, sticky=W)
+
 
 
 window.mainloop()
