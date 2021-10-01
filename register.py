@@ -19,14 +19,13 @@ conn=sqlite3.connect('register.db')
 
 c=conn.cursor()
 
-#######table
+######table
 
-# c.execute(""" CREATE TABLE login(
+# c.execute(""" CREATE TABLE login (
         
 #         name String NOT NULL,
 #         username String PRIMARY KEY,
-#         adress String NOT NULL,
-#         DOB Integer NOT NULL,
+#         address String NOT NULL,
 #         password String NOT NULL,
 
 
@@ -48,7 +47,7 @@ def register():
 
     c=conn.cursor()
 
-    c.execute('SELECT 1 FROM login WHERE username = ?',(username_entry.get(),))
+    c.execute('SELECT 1 FROM login WHERE username = ?',(usernamer_entry.get(),))
 
     while len(c.fetchall()) > 0:
 
@@ -56,16 +55,15 @@ def register():
         
         run_register()
 
-        c.execute('SELECT 1 FROM login WHERE username = ?',(username_entry.get(),))
+        c.execute('SELECT 1 FROM login WHERE username = ?',(usernamer_entry.get(),))
 
 
-    c.execute("INSERT INTO login VALUES(:name, :username, :adress, :password)",
+    c.execute("INSERT INTO login VALUES(:name, :username, :address, :password)",
         
                 {
                     "name": name_entry.get(),
-                    "username": username_entry.get(),
+                    "usernamer": usernamer_entry.get(),
                     "address": address_entry.get(),
-                    "DOB": DOB_entry.get(),
                     "password": password_entry.get(),
                     
                 }
@@ -75,9 +73,9 @@ def register():
     messagebox.showinfo("register","register sucessfully")
     
     name_entry.delete(0,END)
-    username_entry.delete(0,END)
+    usernamer_entry.delete(0,END)
     address_entry.delete(0,END)
-    DOB_entry.delete(0,END)
+
     password_entry.delete(0,END)
 
     conn.commit()
@@ -94,10 +92,10 @@ name_label.place(x=4,y=250)
 name_entry=Entry(root,font=Canvas,width=35,bg="white")
 name_entry.place(x=4,y=275)
 
-username_label=Label(root,bg="#111d5e",text="Username:",font=(Canvas,12),fg="red")
-username_label.place(x=4,y=305)
-username_entry=Entry(root,font=Canvas,width=35,bg="white")
-username_entry.place(x=4,y=330)
+usernamer_label=Label(root,bg="#111d5e",text="Username:",font=(Canvas,12),fg="red")
+usernamer_label.place(x=4,y=305)
+usernamer_entry=Entry(root,font=Canvas,width=35,bg="white")
+usernamer_entry.place(x=4,y=330)
 
 address_label=Label(root,bg="#111d5e",text="Address:",font=(Canvas,12),fg="red")
 address_label.place(x=4,y=360)
