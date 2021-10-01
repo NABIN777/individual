@@ -119,9 +119,14 @@ password_entry.place(x=4,y=495)
 register_button=Button(root,text="Sign Up",bg="green",borderwidth=4,command=register,relief=GROOVE,fg="WHITE",width=20)
 register_button.place(x=110,y=530)
 
+# logo image
 
+image1=Image.open("signup.png")
+image1=image1.resize((150,150),(Image.ANTIALIAS))
+image1=ImageTk.PhotoImage(image1)
 
-
+load_img=Label(root,image=image1,bg="grey")
+load_img.place(x=125,y=75)
 
 
 conn.commit()
