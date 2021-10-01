@@ -5,8 +5,8 @@ import json
 import pyperclip
 from password import password_generator
 from PIL import Image,ImageTk
-import tkhtmlview 
-from tkhtmlview import HTMLLabel
+import subprocess
+
 
 window = Tk()
 window.title("Password Manager")
@@ -129,6 +129,31 @@ image_3=Image.open("add.png")
 image_3=image_3.resize((200,20),Image.ANTIALIAS)
 image_3=ImageTk.PhotoImage(image_3)
 
+# functions for hyperlink window button
+
+
+def run_facebook():
+    window.destroy()
+    subprocess.call(["python","facebook.py"])
+
+
+
+def run_google():
+    window.destroy()
+    subprocess.call(["python","google.py"])
+
+
+
+def run_youtube():
+    window.destroy()
+    subprocess.call(["python","youtube.py"])
+
+
+
+
+
+
+
 # Label
 # Label for Website
 website_label = Label(text="Website:", bg="#111d5e", padx=20, font=("Times", 14), fg="RED")
@@ -178,11 +203,7 @@ main_frame.place(x=0, y=278)
 my_canvas = Canvas(main_frame, width=846, height=250,bg="#111d5e")
 my_canvas.pack(side=LEFT, fill=BOTH)
 
-# my_label=HTMLLabel(my_canvas,html='<a href ="facebook.com">facebook</a>')
-# my_label.place(x=10,y=25)
-
-# html_label = HTMLLabel(my_canvas,bg="#111d5e", html='<a href="youtube.com">youtube</a>')
-# html_label.pack(padx=200,pady=200)
+#Labeling inside canvas
 
 text_label=Label(my_canvas,text="© Nirajan coporate Limited",fg="silver",bg="#111d5e")
 text_label.place(x=330,y=180)
@@ -195,22 +216,16 @@ text_label1=Label(my_canvas,text="LINKS",fg="silver",bg="#111d5e",relief=GROOVE,
 text_label1.place(x=315,y=5,height=40)
 
 
+Button_f=Button(my_canvas,text="facebook",relief=GROOVE,bg="Blue",fg="white",width=15,command=run_facebook)
+Button_f.place(x=2,y=48)
 
-# html_label = HTMLLabel(my_canvas, html='<h1 style="color: red; text-align: center"> Hello World </H1>')
-# html_label.pack(fill="both", expand=True)
-# html_label.fit_height()
+Button_g=Button(my_canvas,text="G Google",relief=GROOVE,bg="blue",fg="green",width=15,command=run_google)
+Button_g.place(x=360,y=48)
+
+Button_y=Button(my_canvas,text="YOUTUBE ▶️",relief=GROOVE,bg="Red",fg="white",width=15,command=run_youtube)
+Button_y.place(x=730,y=48)
 
 
 
-# my_label = HTMLLabel(window, html="""
-#     <ul>
-#         <li><a href='https://www.geeksforgeeks.org/python-programming-language/'>Python</a></li>
-#         <li><a href='https://www.geeksforgeeks.org/c-plus-plus/'>C++</a></li>
-#         <li><a href='https://www.geeksforgeeks.org/java/'>Java</a></li>
-#     </ul>
-#     """)
- 
-# Adjust label
-# my_label.pack(pady=20, padx=20)
 
 window.mainloop()

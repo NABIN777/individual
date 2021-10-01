@@ -1,3 +1,4 @@
+'''in this window code is written for registration window'''
 from tkinter import *
 from PIL import ImageTk,Image
 import sqlite3
