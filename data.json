@@ -2,5 +2,9 @@
     "Facebook": {
         "Email": "nabin.kh22",
         "Password": "asd"
+    },
+    "facebook": {
+        "Email": "nabin.kh@example.com",
+        "Password": "bbbb"
     }
 }

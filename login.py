@@ -37,6 +37,8 @@ c=conn.cursor()
 
 #         )""")
 
+
+#function for subprocess 
 def run_register():
    root.destroy()
    subprocess.call(["python","register.py"])
@@ -55,6 +57,8 @@ def open(user):
    subprocess.call(["python","project.py", "--user", user[1]])
    
 
+
+# the follwing code will helps us to subprocees through correct login
 def login():
 
    conn=sqlite3.connect('register.db')    
@@ -71,7 +75,7 @@ def login():
 
    while not user:
 
-      messagebox.showerror("Invalid","Invalid username or password")
+      messagebox.showerror("Invalid","Invalid username or password")#dispaly message box
 
       run_login()
 
@@ -97,7 +101,7 @@ def login():
 
 
 
-
+# ---------------------------labeling--------------------------------
 
 
 login_text_label=Label(root,text="LOGIN",font=(Canvas,30),bg="#111d5e",relief=GROOVE,fg="maroon",borderwidth=6)
@@ -110,7 +114,7 @@ username_entry.place(x=4,y=300)
 
 password_label=Label(root,text="Password:",font=(Canvas,12),bg="#111d5e",fg="red")
 password_label.place(x=4,y=330)
-password_entry=Entry(root,font=Canvas,width=35,bg="white",fg="red")
+password_entry=Entry(root,font=Canvas,width=35,bg="white",fg="red",show="*")
 password_entry.place(x=4,y=360)
 
 forget_password_button=Button(root,text="forget password ?",borderwidth=0,fg="green",bg="#111d5e")

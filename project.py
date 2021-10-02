@@ -15,6 +15,8 @@ window.resizable(FALSE, FALSE)
 window.geometry('850x500')
 window.wm_iconbitmap("lock.ico")
 
+
+# generates randoms sting,integers and special charecter
 def get_password():
     password = password_generator()
     pyperclip.copy(password)
@@ -22,7 +24,7 @@ def get_password():
     password_entry.insert(END, password)
 
 
-
+# json file handling
 def database_manager(new_user_entry):
     try:
 
@@ -78,7 +80,7 @@ def save_password():
 def search_password():
     # Getting user website entry
     website = website_entry.get()
-    
+    # for error handling
     if len(website) == 0:
         messagebox.showinfo(title="Oops", message="Please enter a website to search")
     else:
@@ -117,6 +119,7 @@ canvas.config()
 canvas.create_image(100, 100, image=l_1)
 canvas.place(x=325,y=10)
 
+# helps to add images 
 image_1=Image.open("search.png")
 image_1=image_1.resize((190,22),Image.ANTIALIAS)
 image_1=ImageTk.PhotoImage(image_1)
@@ -132,22 +135,23 @@ image_3=ImageTk.PhotoImage(image_3)
 
 # functions for hyperlink window button
 
-
+# subprocess the page facebook.py
 def run_facebook():
-    window.destroy()
+    window.destroy() #destroy current window
     subprocess.call(["python","facebook.py"])
 
 
-
+# subprocess the page google.py
 def run_google():
     window.destroy()
     subprocess.call(["python","google.py"])
 
 
 
+# subprocess the page youtube.py
 def run_youtube():
     window.destroy()
-    subprocess.call(["python","youtube.py"])
+    subprocess.call(["python","youtube.py"]) #giving name of file which to be subprocess
 
 
 
@@ -216,6 +220,7 @@ text_label1.place(x=350,y=200)
 text_label1=Label(my_canvas,text="LINKS",fg="silver",bg="#111d5e",relief=GROOVE,borderwidth=6,width=25)
 text_label1.place(x=315,y=5,height=40)
 
+# button for iside of creaed canvas
 
 Button_f=Button(my_canvas,text="facebook",relief=GROOVE,bg="Blue",fg="white",width=15,command=run_facebook)
 Button_f.place(x=2,y=48)
