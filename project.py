@@ -13,6 +13,7 @@ window.title("Password Manager")
 window.config(bg="#111d5e")
 window.resizable(FALSE, FALSE)
 window.geometry('850x500')
+window.wm_iconbitmap("lock.ico")
 
 def get_password():
     password = password_generator()
@@ -157,40 +158,40 @@ def run_youtube():
 # Label
 # Label for Website
 website_label = Label(text="Website:", bg="#111d5e", padx=20, font=("Times", 14), fg="RED")
-website_label.place(x=80,y=200)
+website_label.place(x=40,y=200)
 
 # Label for Email/Username
 email_label = Label(text="Email/Username:", bg="#111d5e", padx=20, font=("Times", 14), fg="RED")
-email_label.place(x=80,y=225)
+email_label.place(x=40,y=225)
 
 # Label for Password
 password_label = Label(text="Password:", bg="#111d5e", padx=20, font=("Times", 14), fg="RED")
-password_label.place(x=80,y=250)
+password_label.place(x=40,y=250)
 
 # Entry widgets
 website_entry = Entry(width=30, bg="silver", fg="RED", font=("Times", 14))
 website_entry.insert(END, string="")
-website_entry.place(x=250,y=200)
+website_entry.place(x=200,y=200)
 # starting cursor focus
 website_entry.focus()
 email_entry = Entry(width=30, bg="silver", fg="RED", font=("Times", 14))
 email_entry.insert(END, string="")
-email_entry.place(x=250,y=225)
+email_entry.place(x=200,y=225)
 # set default email
 email_entry.insert(0, "nabin.kh@example.com")
 
 password_entry = Entry(width=30, bg="silver", fg="RED", font=("Times", 14))
 password_entry.insert(END, string="")
-password_entry.place(x=250,y=250)
+password_entry.place(x=200,y=250)
 
 # buttons
 search_button = Button(window,command=search_password,image=image_1)
-search_button.place(x=550,y=200)
+search_button.place(x=485,y=200)
 
 generate_button = Button(window,command=get_password,image=image_2)
-generate_button.place(x=550,y=245)
-add_button = Button(window,command=save_password,image=image_3)
-add_button.place(x=290,y=300)
+generate_button.place(x=485,y=245)
+add_button = Button(window,command=save_password,image=image_3,width=145)
+add_button.place(x=695,y=245)
 
 
 

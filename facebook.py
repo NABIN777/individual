@@ -1,15 +1,15 @@
-
+'''in this window code is writeen for html hyperlink'''
 
 from tkinter import *
-from tkhtmlview import HTMLLabel
- 
-# Create Object
+from tkhtmlview import HTMLLabel #view as html file
+import subprocess 
+
 root = Tk()
- 
-# Set Geometry
 root.geometry("400x400")
+root.wm_iconbitmap("facebook.ico")
+root.title("facebook")
  
-# Add label
+
 my_label = HTMLLabel(root, html="""
 <li> LINK FOR FACEBOOK</LI>
     <ul>
@@ -19,5 +19,18 @@ my_label = HTMLLabel(root, html="""
     """)
  
 my_label.pack(pady=20, padx=20)
+
+
+# function for home button
+
+def run_home():
+
+    root.destroy()
+    subprocess.call(["python","project.py"])
+
+
+
+b=Button(root,text="⌂ home",bg="black",fg="white",command=run_home)
+b.place(x=180,y=250)
  
 root.mainloop()

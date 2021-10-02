@@ -12,6 +12,7 @@ root.title('Register')
 root.geometry('400x580')
 root.resizable(False, False)
 root.config(bg="#111d5e")
+root.wm_iconbitmap("signup.ico")
 
 #----------------------------------DATABASE---------------------------------------
 
@@ -26,8 +27,9 @@ c.execute(""" CREATE TABLE IF NOT EXISTS login(
          name String NOT NULL,
          username Text PRIMARY KEY,
          address String NOT NULL,
+         dob Integer NOT NULL,
          password String NOT NULL
-
+         
     )""")
 def run_register():
    root.destroy()
@@ -57,15 +59,15 @@ def register():
         c.execute('SELECT * FROM login WHERE username = ?',(usernameR_entry.get(),))
 
 
-    c.execute("INSERT INTO login VALUES(:name, :username, :address,:password)",
+    c.execute("INSERT INTO login VALUES(:name, :username, :address, :dob, :password)",
         
                 {
                     "name": name_entry.get(),
                     "username": usernameR_entry.get(),
-
                     "address": address_entry.get(),
-                 
+                    "dob": DOB_entry.get(),
                     "password": password_entry.get()
+                    
                 }
         
         )
@@ -75,9 +77,10 @@ def register():
     name_entry.delete(0,END)
     usernameR_entry.delete(0,END)
     address_entry.delete(0,END)
-    
+    DOB_entry.delete(0,END)
     password_entry.delete(0,END)
-
+    
+    
     conn.commit()
     conn.close()
     

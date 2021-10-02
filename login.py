@@ -1,3 +1,4 @@
+'''in this window code is written for login page'''
 from tkinter import *
 from PIL import ImageTk,Image
 import sqlite3
@@ -13,6 +14,7 @@ root.title("LOGIN")
 root.geometry('400x580')
 root.resizable(FALSE, FALSE)
 root.config(bg="#111d5e")
+root.wm_iconbitmap("login.ico")
 
 
 # -------------------Database-------------------
