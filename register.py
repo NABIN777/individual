@@ -66,8 +66,7 @@ def register():
                     "username": usernameR_entry.get(),
                     "address": address_entry.get(),
                     "dob": DOB_entry.get(),
-                    "password": password_entry.get()
-                    
+                    "password": password_entry.get(),
                 }
         
         )
