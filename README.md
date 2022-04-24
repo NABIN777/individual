@@ -25,8 +25,9 @@ Using Python Tkinter GUI Tool Kit
 - Users can be able to manage their passwords as well as their family members.
 - Try to provide our software to different organizations for their staff credential management.
 
-**DEMONSTRATION**
- [Video Link](https://youtu.be/Cz8uitRPtmk)
+
  
  ![](logo.png)
+ 
+ :tada::tada::tada::tada::tada::tada:
         
